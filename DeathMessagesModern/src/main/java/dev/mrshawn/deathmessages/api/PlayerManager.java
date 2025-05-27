@@ -1,6 +1,7 @@
 package dev.mrshawn.deathmessages.api;
 
 import com.tcoded.folialib.wrapper.task.WrappedTask;
+import com.vanguardfactions.settings.model.Setting;
 import dev.mrshawn.deathmessages.DeathMessages;
 import dev.mrshawn.deathmessages.config.UserData;
 import dev.mrshawn.deathmessages.files.Config;
@@ -80,15 +81,12 @@ public class PlayerManager {
     }
 
     public boolean getMessagesEnabled() {
-        return messagesEnabled;
+        return Setting.isEnabled(getPlayer(), "death-messages");
     }
 
     public void setMessagesEnabled(boolean b) {
         this.messagesEnabled = b;
-        if (saveUserData) {
-            UserData.getInstance().getConfig().set(playerUUID.toString() + ".messages-enabled", b);
-            UserData.getInstance().save();
-        }
+        Setting.toggle(getPlayer(), "death-messages");
     }
 
     public boolean isBlacklisted() {

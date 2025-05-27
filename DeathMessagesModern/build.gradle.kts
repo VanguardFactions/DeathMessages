@@ -4,6 +4,10 @@ plugins {
     id("com.willfp.libreforge-gradle-plugin") version "1.0.2"
 }
 
+repositories {
+    mavenLocal()
+}
+
 dependencies {
     implementation(project(":Hooks:WorldGuard"))
     implementation(project(":Hooks:WorldGuard7"))
@@ -24,6 +28,8 @@ dependencies {
     compileOnly("com.github.sirblobman.combatlogx:api:11.5-SNAPSHOT")
     compileOnly("org.sayandev:sayanvanish-api:1.6.0")
     compileOnly("org.sayandev:sayanvanish-bukkit:1.6.0")
+
+    compileOnly("com.vanguardfactions:Settings-plugin:1.0.0-DEV")
 }
 
 configure<JavaPluginExtension> {
