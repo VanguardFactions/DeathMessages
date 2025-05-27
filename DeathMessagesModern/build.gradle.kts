@@ -29,7 +29,13 @@ dependencies {
     compileOnly("org.sayandev:sayanvanish-api:1.6.0")
     compileOnly("org.sayandev:sayanvanish-bukkit:1.6.0")
 
-    compileOnly("com.vanguardfactions:Settings-plugin:1.0.0-DEV")
+    compileOnly("com.vanguardfactions:Settings-plugin:1.0.0-DEV") {
+        exclude(group = "com.google.guava", module = "guava")
+        exclude(group = "com.google.code.gson", module = "gson")
+        exclude(group = "org.jetbrains", module = "annotations")
+        exclude(group = "net.kyori", module = "adventure-text-serializer-gson")
+        exclude(group = "com.sk89q.worldguard", module = "worldguard-bukkit")
+    }
 }
 
 configure<JavaPluginExtension> {
